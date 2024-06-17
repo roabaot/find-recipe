@@ -6,10 +6,17 @@ import {
 } from "@/components/common";
 import { dishTypeData } from "@/data";
 import { pattern_one } from "@/utils/images";
-import React from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { fetchRecipes } from "@/redux/utils/recipeUtils";
 
 const HomePage = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchRecipes("chicken"));
+  }, [dispatch]);
   return (
     <main className="home-page custom-min-h pt-[4px]">
       <BinnerSilder />

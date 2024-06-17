@@ -1,5 +1,4 @@
 import { cuisinesData } from "@/data";
-import React from "react";
 import { Link } from "react-router-dom";
 import Slider, { Settings } from "react-slick";
 
