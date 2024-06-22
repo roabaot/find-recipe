@@ -37,4 +37,8 @@ export const { selectAll: selectAllRecipes } = recipesAdapter.getSelectors(
   (state: RootState) => state.recipes
 );
 
+export const getRecipesStatus = (state: RootState) => state.recipes.status;
+
+export const getRecipesError = (state: RootState) => state.recipes.error;
+
 export default recipesSlice.reducer;

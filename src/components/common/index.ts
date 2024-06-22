@@ -6,6 +6,8 @@ import BinnerSilder from "./BinnerSilder";
 import Title from "./Title";
 import CategorySlider from "./CategorySlider";
 import MealSlider from "./MealSlider";
+import Loading from "./Loading";
+import TypeList from "./TypeList";
 
 export {
   Header,
@@ -16,4 +18,6 @@ export {
   Title,
   CategorySlider,
   MealSlider,
+  Loading,
+  TypeList,
 };

@@ -10,7 +10,7 @@ interface FetchRecipesResponse {
   nextPage: string | null;
 }
 
-export const fetchRecipes = createAsyncThunk(
+export const fetchRecipes = createAsyncThunk<FetchRecipesResponse, string>(
   "recipes/fetchRecipes",
   async (queryText: string = "chicken") => {
     try {
@@ -20,6 +20,8 @@ export const fetchRecipes = createAsyncThunk(
       );
       const data = res?.data || [];
       let recipesData = extractRecipeData(data);
+      console.log("recipesData: ", recipesData);
+
       return recipesData as FetchRecipesResponse;
     } catch (error) {
       throw Error("Faild to fetch recipes.");
