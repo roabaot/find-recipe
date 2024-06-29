@@ -8,6 +8,9 @@ import CategorySlider from "./CategorySlider";
 import MealSlider from "./MealSlider";
 import Loading from "./Loading";
 import TypeList from "./TypeList";
+import PageTitle from "./PageTitle";
+import Breadcrumb from "./Breadcrumb";
+import Select from "./Select";
 
 export {
   Header,
@@ -20,4 +23,7 @@ export {
   MealSlider,
   Loading,
   TypeList,
+  PageTitle,
+  Breadcrumb,
+  Select,
 };

@@ -1,9 +1,11 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import recipesReducer from "./recipesSlice";
+import typesReducer from "./typesSlice";
 import { useDispatch } from "react-redux";
 
 const rootReducer = combineReducers({
   recipes: recipesReducer,
+  types: typesReducer,
 });
 
 const store = configureStore({
