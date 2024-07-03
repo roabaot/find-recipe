@@ -12,18 +12,10 @@ import { fetchTypesRecipes } from "@/redux/utils/typeUtils";
 import { scrollToTop } from "@/utils/scrollToTop";
 import { STATUS } from "@/utils/status";
 import { useState, ChangeEvent, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 const RecipeListPage = () => {
-  interface objProbs {
-    typeData: {
-      typeOf: string;
-      typeName: string;
-    };
-    nextPageLink: string | null;
-  }
-
   const { typeOf, typeName } = useParams();
   const [typeData, setTypeData] = useState({
     typeName: typeName || "",
@@ -46,7 +38,7 @@ const RecipeListPage = () => {
 
   useEffect(() => {
     dispatch(fetchTypesRecipes({ typeData, nextPageLink }));
-  }, [typeData, nextPageLink, dispatch]);
+  }, [typeData, dispatch]);
 
   useEffect(() => scrollToTop(), []);
 
@@ -68,7 +60,26 @@ const RecipeListPage = () => {
             ) : STATUS.FAILED === recipesStatus ? (
               recipesError
             ) : (
-              <RecipeList recipes={recipes as recipe[]} recipesLength={12} />
+              <RecipeList recipes={recipes as recipe[]} />
+            )}
+
+            {nextPageLink!?.length > 0 && (
+              <div className="next-button">
+                <button
+                  className="next-page-btn"
+                  type="button"
+                  onClick={() =>
+                    dispatch(
+                      fetchTypesRecipes({
+                        typeData: {} as { typeOf: string; typeName: string },
+                        nextPageLink,
+                      })
+                    )
+                  }
+                >
+                  Next Page
+                </button>
+              </div>
             )}
           </div>
         </div>

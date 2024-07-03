@@ -7,7 +7,7 @@ const fetchData = (url: string) => {
   // In the case of the url fetch link (E.g. next page data fetch link)
 
   if (url.startsWith("http://") || url.startsWith("https://")) {
-    instance.get(url); // if theurl already contains https:// or http://
+    return instance.get(url); // if theurl already contains https:// or http://
   } else {
     // In the case of normal fetch with base url
     instance.defaults.baseURL = baseURL;

@@ -20,6 +20,7 @@ import { useAppDispatch } from "@/redux/store/store";
 import { STATUS } from "@/utils/status";
 import { RecipeList } from "@/components/recipe";
 import { recipe } from "@/components/recipe/RecipeList";
+import { scrollToTop } from "@/utils/scrollToTop";
 
 const HomePage = () => {
   const dispatch = useAppDispatch();
@@ -35,6 +36,8 @@ const HomePage = () => {
     };
     fetchData();
   }, [dispatch]);
+
+  useEffect(() => scrollToTop(), []);
   return (
     <main className="home-page custom-min-h pt-[4px]">
       <BinnerSilder />
