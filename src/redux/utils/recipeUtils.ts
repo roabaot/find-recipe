@@ -28,3 +28,30 @@ export const fetchRecipes = createAsyncThunk<FetchRecipesResponse, string>(
     }
   }
 );
+
+export const fetchSearchRecipe = createAsyncThunk(
+  "recipes/fetchSearchRecipes",
+  async ({
+    queryText,
+    nextPageLink,
+  }: {
+    queryText: string;
+    nextPageLink: string | null;
+  }) => {
+    try {
+      let recipesData = null;
+      if (!nextPageLink) {
+        const { data } = await fetchData(
+          `?type=public&app_id=${APP_ID}&app_key=${APP_KEY}&q=${queryText}`
+        );
+        recipesData = extractRecipeData(data);
+      } else {
+        const { data } = await fetchData(`${nextPageLink}`);
+        recipesData = extractRecipeData(data);
+      }
+      return recipesData;
+    } catch (error) {
+      throw Error("Faild to fetch single recipe");
+    }
+  }
+);
